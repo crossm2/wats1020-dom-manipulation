@@ -2,29 +2,24 @@
 // WATS1020 Dom Manipulation
 // Custom script goes here.
 //////////////////////////////////////////////////
-
-$( document ).ready(function() {
-    var userInfo = {
-        firstName: 'Jane',
-        lastName: 'Doe'
-    };
-    var voteCounts = {
-        great: 0,
-        greatest: 0,
-        total: 0
-    };
-    // Place all your Javascript code inside this "document ready" function so
-    // it does not run until the DOM is ready for Javascript manipulation.
-
     // TODO: Create a function to listen for clicks on the "login" button.
     //      1. When a user clicks the "login" button, hide the login
     //          form elements on the page.
     //      2. Fill the user's first and last name into `div.user-info`.
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
-
-
-    // TODO: Create a function to listen for clicks on all the "View Details"
+	$(document).ready(function(){
+	   $('#login-button').on('click', function() { 
+		   $('#login-form').hide(); 
+		   $('.user-info').show();
+		   $('.user-fullname').text(userInfo.firstName + " "+ userInfo.lastName);
+	   });
+		$('#logout-button').on('click', function(){
+			$('.user-info').hide();
+			$('#login-form').show();
+		});
+		
+			// TODO: Create a function to listen for clicks on all the "View Details"
     // buttons so that when a user clicks a "View Details" button they see
     // the content contained in the elements with the class "details" in the
     // proper part of the screen.
@@ -33,6 +28,42 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
+	  $(".view-details").on ('click',function() {
+		  console.log('hello');
+			   var detailsParent = $(this).parent();
+		  console.log(detailsParent);
+		      var details = detailsParent.find('.details');
+		  console.log(details);
+			   details.toggle();
+			  // $("btn btn-default view-details").html('hide details');
+		   });
+		
+		
+		
+		
+		
+		
+		 });
+    var userInfo = {
+        firstName: 'Marlie',
+        lastName: 'Magic'
+    };
+      /*  var ValEmail = $('#email').val() ==='admin@admin.com'; // Email Value
+        var ValPassword = $('#password').val() === 'admin'; // Password Value
+        if (ValEmail === true && ValPassword === true) { // if ValEmail & ValPass are as above*/	
+		   
+
+		   
+
+
+    var voteCounts = {
+        great: 0,
+        greatest: 0,
+        total: 0
+    };
+
+
+  
 
     // TODO: Create a function that listens for clicks on the voting buttons and
     // looks at the `data-vote` attribute on each button to see what was voted for,
@@ -44,4 +75,4 @@ $( document ).ready(function() {
     //      4. Determine the respective percentages (out of 100) for each progress bar.
     //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
 
-});
+
