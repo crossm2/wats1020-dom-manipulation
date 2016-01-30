@@ -2,12 +2,6 @@
 // WATS1020 Dom Manipulation
 // Custom script goes here.
 //////////////////////////////////////////////////
-    // TODO: Create a function to listen for clicks on the "login" button.
-    //      1. When a user clicks the "login" button, hide the login
-    //          form elements on the page.
-    //      2. Fill the user's first and last name into `div.user-info`.
-    //      (NOTE: You do not have to perform any validation on the data as
-    //          a base requirement.)
 	$(document).ready(function(){
 	   $('#login-button').on('click', function() { 
 		   $('#login-form').hide(); 
@@ -30,20 +24,43 @@
     //          understands they can hide the text again.
 	  $(".view-details").on ('click',function() {
 		  console.log('hello');
-			   var detailsParent = $(this).parent();
+			   var detailsParent = $(".view-details").parents();
 		  console.log(detailsParent);
 		      var details = detailsParent.find('.details');
 		  console.log(details);
 			   details.toggle();
-			  // $("btn btn-default view-details").html('hide details');
+		 if ($(details).is(':visible'))
+		 {$(".view-details").html('Hide details');
+		 }
+		  else{
+			  $(".view-details").html('View details');
+		  }
 		   });
 		
-		
-		
-		
-		
-		
+		$(".vote").on ('click', function(){
+			var voteData =$(this).data('vote');
+					   console.log(voteData);
+			if (voteData == "great") {
+				voteCounts.great++;
+			}
+			if (voteData == "greatest") {
+				voteCounts.greatest++;
+			}
+			voteCounts.total++;
+			console.log(voteCounts);
+			var progressBarGreat = (voteCounts.great / voteCounts.total) * 100;
+			var progressBarGreatest = (voteCounts.greatest / voteCounts.total) * 100;
+			console.log(progressBarGreat);
+			console.log(progressBarGreatest);
+			$('.great-progress').attr('style',"width:" + progressBarGreat+ "%");
+			$('.greatest-progress').attr('style',"width:" + progressBarGreatest+ "%");		   
+		});
 		 });
+    var voteCounts = {
+        great: 0,
+        greatest: 0,
+        total: 0
+    };
     var userInfo = {
         firstName: 'Marlie',
         lastName: 'Magic'
@@ -53,26 +70,10 @@
         if (ValEmail === true && ValPassword === true) { // if ValEmail & ValPass are as above*/	
 		   
 
-		   
-
-
-    var voteCounts = {
-        great: 0,
-        greatest: 0,
-        total: 0
-    };
 
 
   
 
-    // TODO: Create a function that listens for clicks on the voting buttons and
-    // looks at the `data-vote` attribute on each button to see what was voted for,
-    // then determines the updated vote breakdown to adjust the progress bars.
-    //      1. Set up an event listener on the buttons with the `vote` class.
-    //      2. When a button is clicked, look at the `data-vote` attribute to determine
-    //          what the user is voting for ("great" or "greatest").
-    //      3. Increment the counter for whichever vote talley is affected.
-    //      4. Determine the respective percentages (out of 100) for each progress bar.
-    //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
+
 
 
