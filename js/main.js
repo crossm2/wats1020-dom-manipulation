@@ -23,17 +23,20 @@
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
 	  $(".view-details").on ('click',function() {
-		  console.log('hello');
-			   var detailsParent = $(".view-details").parents();
-		  console.log(detailsParent);
-		      var details = detailsParent.find('.details');
-		  console.log(details);
-			   details.toggle();
+		 
+		var detailsParent = $(this).closest('div');
+		 
+		var details = detailsParent.find('.details');
+		
+		details.toggle();
+		  
 		 if ($(details).is(':visible'))
-		 {$(".view-details").html('Hide details');
+		 {
+			 $(this).html('Hide details');
 		 }
-		  else{
-			  $(".view-details").html('View details');
+		  else
+		  {
+			  $(this).html('View details');
 		  }
 		   });
 		
